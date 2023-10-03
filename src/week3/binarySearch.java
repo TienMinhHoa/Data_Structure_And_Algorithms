@@ -1,8 +1,10 @@
+package week3;
+
 public class binarySearch {
     public static int bSearch(int[] a, int number) {
         int l = 0;
         int r = a.length - 1;
-        while (l < r) {
+        while (l <= r) {
             int mid = l + (r - l) / 2;
             if (a[mid] > number) {
                 r = mid-1;
