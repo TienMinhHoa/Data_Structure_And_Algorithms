@@ -1,0 +1,50 @@
+package Week6;
+
+import java.util.Scanner;
+
+public class QuickSort {
+    public static int partition(int[] arr, int low, int high){
+        int i = low -1;
+        int pivot = arr[high];
+        for(int j=low; j < high;j++){
+
+            if(arr[j]<pivot){
+                i++;
+                int tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+        int tmp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = tmp;
+        return i+1;
+    }
+
+    public  void sort(int[] arr, int low, int high){
+        if(low <high){
+            int pi = partition(arr,low,high);
+            printArray(arr);
+            sort(arr,low,pi-1);
+            sort(arr,pi+1,high);
+        }
+    }
+
+    static void printArray(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++){
+            arr[i] = input.nextInt();
+        }
+        QuickSort ob = new QuickSort();
+        ob.sort(arr,0,n-1);
+    }
+}
